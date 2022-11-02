@@ -57,7 +57,7 @@ private:
 	ComponentBitSet componentBitSet;
 	GroupBitSet groupBitSet;
 public:
-	Entity(Manager& mManager) : manager(mManager){}
+	Entity(Manager& mManager) : manager(mManager) {}
 
 	void update()
 	{

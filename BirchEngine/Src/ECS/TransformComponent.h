@@ -17,18 +17,7 @@ public:
 
 	int speed = 3;
 
-
-	TransformComponent()
-	{
-		position.Zero();
-	}
-
-	TransformComponent(int sc)
-	{
-		position.x = 400;
-		position.y = 320;
-		scale = sc;
-	}
+	TransformComponent() = default;
 
 	TransformComponent(float x, float y)
 	{
