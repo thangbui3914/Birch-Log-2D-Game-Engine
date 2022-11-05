@@ -8,26 +8,27 @@
 #include "Animation.h"
 #include "Color.h"
 
-Manager manager;
+
+//Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 bool Game::isRunning = false;
 
 // Entity
-auto& background(manager.addEntity());
-auto& cookie(manager.addEntity());
-auto& score(manager.addEntity());
+//auto& background(manager.addEntity());
+//auto& cookie(manager.addEntity());
+//auto& score(manager.addEntity());
 
 // Group
-enum groupLabels : std::size_t
-{
-	groupMap,
-	groupScreen,
-};
-
-auto& backgrounds(manager.getGroup(groupMap));
-auto& screens(manager.getGroup(groupScreen));
+//enum groupLabels : std::size_t
+//{
+//	groupMap,
+//	groupScreen,
+//};
+//
+//auto& backgrounds(manager.getGroup(groupMap));
+//auto& screens(manager.getGroup(groupScreen));
 
 Game::Game()
 {}
@@ -70,10 +71,10 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		{
 			std::cout << "TTF_Init() error:" << TTF_GetError() << std::endl;
 		}
-
+		stateMachine = new StateMachine();
 		isRunning = true;
 	}
-	background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
+	/*background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
 	background.addComponent<SpriteComponent>("assets/background.jpg");
 	background.addGroup(groupMap);
 
@@ -84,13 +85,14 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 	cookie.addComponent<TransformComponent>(512.0f, 232.0f, 32, 32, 8);
 	cookie.addComponent<AnimationComponent>("assets/cookie.png", spriteSheetData(2, { 1, 3 }, { 1, 50 }));
-	cookie.addGroup(groupScreen);
+	cookie.addGroup(groupScreen);*/
 
 }
 
 void Game::handleEvents()
 {
-	static int scores = 0;
+	stateMachine->input();
+	/*static int scores = 0;
 	static std::string str;
 	while (SDL_PollEvent(&event) != 0)
 	{
@@ -111,21 +113,22 @@ void Game::handleEvents()
 			break;
 		}
 
-	}
+	}*/
 }
 
 void Game::update()
 {
-
-	manager.refresh();
-	manager.Update();
+	stateMachine->update();
+	/*manager.refresh();
+	manager.Update();*/
 }
 
 
 
 void Game::render()
 {
-	SDL_RenderClear(renderer);
+	stateMachine->draw();
+	/*SDL_RenderClear(renderer);
 	for (auto& i : backgrounds)
 	{
 		i->draw();
@@ -134,7 +137,7 @@ void Game::render()
 	{
 		i->draw();
 	}
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(renderer);*/
 }
 
 void Game::clean()

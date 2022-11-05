@@ -5,6 +5,7 @@
 #include <iostream>
 #include "SDL_image.h"
 #include <vector>
+#include "StateMachine/StateMachine.h"
 
 class ColliderComponent;
 
@@ -26,7 +27,7 @@ public:
 	static TTF_Font* gFont;
 	static SDL_Event event;
 	static bool isRunning;
-
+	StateMachine* stateMachine;
 private:
 	int cnt = 0;
 	SDL_Window* window;

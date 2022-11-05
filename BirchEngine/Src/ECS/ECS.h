@@ -171,4 +171,9 @@ public:
 		entities.emplace_back(std::move(uPtr));
 		return *e;
 	}
+
+	void deleteAllEntities()
+	{
+		for (auto& c : entities) c->destroy();
+	}
 };
