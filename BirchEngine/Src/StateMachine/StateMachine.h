@@ -4,6 +4,7 @@
 enum gameStates
 {
 	playState,
+	menuState,
 };
 
 class StateMachine;
@@ -13,7 +14,6 @@ class State
 public:
 	StateMachine* stateMachine;
 
-	virtual void init() {}
 	virtual void input() {}
 	virtual void draw() {}
 	virtual ~State() {}

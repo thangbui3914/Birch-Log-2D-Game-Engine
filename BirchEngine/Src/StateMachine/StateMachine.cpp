@@ -6,7 +6,7 @@
 Manager StateMachine::manager;
 
 StateMachine::StateMachine()
-	:currentState(playState), uState(nullptr)
+	:currentState(menuState), uState(nullptr)
 {
 	changeState(currentState);
 }
@@ -42,6 +42,11 @@ void StateMachine::changeState(gameStates state)
 	{
 	case playState:
 		uState = new PlayState();
+		uState->stateMachine = this;
+		break;
+	case menuState:
+		uState = new MenuState();
+		uState->stateMachine = this;
 		break;
 	default:
 		break;

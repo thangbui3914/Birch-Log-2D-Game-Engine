@@ -18,7 +18,7 @@ public:
 	FrontComponent() = default;
 
 	FrontComponent(const char* path, int fSize)
-		:  texture(nullptr)
+		: texture(nullptr)
 	{
 		font = TTF_OpenFont(path, fSize);
 		if (font == nullptr)
@@ -29,6 +29,11 @@ public:
 
 	~FrontComponent()
 	{
+		if (Game::isRunning)
+		{
+
+			TTF_CloseFont(font);
+		}
 		SDL_DestroyTexture(texture);
 	}
 
@@ -43,11 +48,11 @@ public:
 
 	void update() override
 	{
-		destRect.x = static_cast<int>(transform->position.x - transform->width/2);
-		destRect.y = static_cast<int>(transform->position.y - transform->height/2);
+		destRect.x = static_cast<int>(transform->position.x - transform->width / 2);
+		destRect.y = static_cast<int>(transform->position.y - transform->height / 2);
 		destRect.w = transform->width * transform->scale;
 		destRect.h = transform->height * transform->scale;
-		
+
 	}
 
 	void draw() override

@@ -31,11 +31,6 @@ public:
 		backgrounds(StateMachine::manager.getGroup(groupMap)),
 		screens(StateMachine::manager.getGroup(groupScreen))
 	{
-		init();
-	}
-	void init() override
-	{
-
 		scores = 0;
 
 		background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
@@ -52,7 +47,6 @@ public:
 		cookie.addGroup(groupScreen);
 	}
 
-
 	void input() override
 	{
 		while (SDL_PollEvent(&Game::event) != 0)
@@ -63,13 +57,13 @@ public:
 			case SDL_QUIT:
 				Game::isRunning = false;
 				break;
-				case SDL_MOUSEBUTTONDOWN:
-					cookie.getComponent<AnimationComponent>().changeSpriteRowTimes(1, 1);
+			case SDL_MOUSEBUTTONDOWN:
+				cookie.getComponent<AnimationComponent>().changeSpriteRowTimes(1, 1);
 
-					scores++;
-					str = std::to_string(scores);
-					score.getComponent<FrontComponent>().setText(str.c_str(), color::black);
-					break;
+				scores++;
+				str = std::to_string(scores);
+				score.getComponent<FrontComponent>().setText(str.c_str(), color::black);
+				break;
 			default:
 				break;
 			}

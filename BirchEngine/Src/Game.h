@@ -7,8 +7,6 @@
 #include <vector>
 #include "StateMachine/StateMachine.h"
 
-class ColliderComponent;
-
 class Game
 {
 public:
