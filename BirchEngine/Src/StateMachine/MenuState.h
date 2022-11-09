@@ -19,10 +19,10 @@ private:
 	std::vector<Entity*>& screens;
 public:
 	MenuState()
-		: background(StateMachine::manager.addEntity()),
-		greetText(StateMachine::manager.addEntity()),
-		backgrounds(StateMachine::manager.getGroup(groupMap)),
-		screens(StateMachine::manager.getGroup(groupScreen))
+		: background(StateMachine::manager->addEntity()),
+		greetText(StateMachine::manager->addEntity()),
+		backgrounds(StateMachine::manager->getGroup(groupMap)),
+		screens(StateMachine::manager->getGroup(groupScreen))
 	{
 		background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
 		background.addComponent<SpriteComponent>("assets/background.jpg");

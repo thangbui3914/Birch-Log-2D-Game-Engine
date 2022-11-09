@@ -23,10 +23,11 @@ class StateMachine
 {
 public:
 	State* uState;
-	static Manager manager;
+	static Manager* manager;
 	gameStates currentState;
 
 	StateMachine();
+	~StateMachine();
 	void input();
 	void update();
 	void draw();

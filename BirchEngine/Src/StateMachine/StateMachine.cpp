@@ -3,12 +3,18 @@
 #include "../Game.h"
 #include "States.h"
 
-Manager StateMachine::manager;
+Manager* StateMachine::manager = nullptr;
 
 StateMachine::StateMachine()
 	:currentState(menuState), uState(nullptr)
 {
+	manager = new Manager();
 	changeState(currentState);
+}
+
+StateMachine::~StateMachine()
+{
+	delete manager;
 }
 
 void StateMachine::input()
@@ -18,8 +24,8 @@ void StateMachine::input()
 
 void StateMachine::update()
 {
-	manager.refresh();
-	manager.Update();
+	manager->refresh();
+	manager->Update();
 }
 
 void StateMachine::draw()
@@ -36,7 +42,7 @@ void StateMachine::changeState(gameStates state)
 		std::cout << "Error try to change state to current state";
 		return;
 	}*/
-	manager.deleteAllEntities();
+	manager->deleteAllEntities();
 	delete uState;
 	switch (state)
 	{

@@ -25,11 +25,11 @@ private:
 
 public:
 	PlayState()
-		:background(StateMachine::manager.addEntity()),
-		cookie(StateMachine::manager.addEntity()),
-		score(StateMachine::manager.addEntity()),
-		backgrounds(StateMachine::manager.getGroup(groupMap)),
-		screens(StateMachine::manager.getGroup(groupScreen))
+		:background(StateMachine::manager->addEntity()),
+		cookie(StateMachine::manager->addEntity()),
+		score(StateMachine::manager->addEntity()),
+		backgrounds(StateMachine::manager->getGroup(groupMap)),
+		screens(StateMachine::manager->getGroup(groupScreen))
 	{
 		scores = 0;
 

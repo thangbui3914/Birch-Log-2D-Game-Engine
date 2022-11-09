@@ -16,7 +16,9 @@ Game::Game()
 {}
 
 Game::~Game()
-{}
+{
+	delete stateMachine;
+}
 
 void Game::init(const char* title, int width, int height, bool fullscreen)
 {

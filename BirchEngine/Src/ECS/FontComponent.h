@@ -29,11 +29,7 @@ public:
 
 	~FrontComponent()
 	{
-		if (Game::isRunning)
-		{
-
-			TTF_CloseFont(font);
-		}
+		TTF_CloseFont(font);
 		SDL_DestroyTexture(texture);
 	}
 
