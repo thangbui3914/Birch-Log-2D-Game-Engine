@@ -37,11 +37,6 @@ void StateMachine::draw()
 
 void StateMachine::changeState(gameStates state)
 {
-	/*if (state == currentState)
-	{
-		std::cout << "Error try to change state to current state";
-		return;
-	}*/
 	manager->deleteAllEntities();
 	delete uState;
 	switch (state)

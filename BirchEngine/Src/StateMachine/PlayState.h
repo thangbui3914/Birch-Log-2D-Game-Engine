@@ -31,6 +31,7 @@ public:
 		backgrounds(StateMachine::manager->getGroup(groupMap)),
 		screens(StateMachine::manager->getGroup(groupScreen))
 	{
+
 		scores = 0;
 
 		background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
