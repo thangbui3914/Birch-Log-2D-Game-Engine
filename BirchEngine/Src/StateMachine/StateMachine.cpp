@@ -1,15 +1,16 @@
 #include "StateMachine.h"
+#include "States.h"
 #include "SDL.h"
 #include "../Game.h"
-#include "States.h"
+
 
 Manager* StateMachine::manager = nullptr;
+State* StateMachine::uState = nullptr;
 
 StateMachine::StateMachine()
-	:currentState(menuState), uState(nullptr)
 {
 	manager = new Manager();
-	changeState(currentState);
+	uState = new MenuState();
 }
 
 StateMachine::~StateMachine()
@@ -35,21 +36,8 @@ void StateMachine::draw()
 	SDL_RenderPresent(Game::renderer);
 }
 
-void StateMachine::changeState(gameStates state)
+void StateMachine::changeState(State* state)
 {
-	manager->deleteAllEntities();
 	delete uState;
-	switch (state)
-	{
-	case playState:
-		uState = new PlayState();
-		uState->stateMachine = this;
-		break;
-	case menuState:
-		uState = new MenuState();
-		uState->stateMachine = this;
-		break;
-	default:
-		break;
-	}
+	uState = state;
 }

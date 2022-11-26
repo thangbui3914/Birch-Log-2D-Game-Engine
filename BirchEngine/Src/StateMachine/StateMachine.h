@@ -1,12 +1,6 @@
 #pragma once
 #include "../ECS/ECS.h"
 
-enum gameStates
-{
-	playState,
-	menuState,
-};
-
 class StateMachine;
 
 class State
@@ -22,14 +16,13 @@ public:
 class StateMachine
 {
 public:
-	State* uState;
+	static State* uState;
 	static Manager* manager;
-	gameStates currentState;
 
 	StateMachine();
 	~StateMachine();
 	void input();
 	void update();
 	void draw();
-	void changeState(gameStates state);
+	void changeState(State* state);
 };

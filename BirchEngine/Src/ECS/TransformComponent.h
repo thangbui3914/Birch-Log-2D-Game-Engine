@@ -2,7 +2,7 @@
 
 #include "Components.h"
 #include "../Vector2D.h"
-
+#include "SDL.h"
 
 class TransformComponent : public Component
 {
@@ -45,6 +45,9 @@ public:
 		position.y += velocity.y * speed;
 	}
 
-
+	SDL_Rect getSDLRect()
+	{
+		return {static_cast<int>(position.x),static_cast<int>(position.y), width*scale, height*scale};
+	}
 
 };
