@@ -109,6 +109,10 @@ void update_ballRestart(PlayState& state)
 	state.ball.getComponent<TransformComponent>().position.y = 330.0f;
 	state.ball.getComponent<TransformComponent>().velocity.x = 5.0f;
 	state.ball.getComponent<TransformComponent>().velocity.y = 5.0f;
+	state.player1.getComponent<TransformComponent>().position.x = 50.0f;
+	state.player1.getComponent<TransformComponent>().position.y = 250.0f;
+	state.player2.getComponent<TransformComponent>().position.x = 1170.0f;
+	state.player2.getComponent<TransformComponent>().position.y = 250.0f;
 }
 
 void PlayState::update()
