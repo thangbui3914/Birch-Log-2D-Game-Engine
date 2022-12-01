@@ -43,7 +43,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		{
 			std::cout << "Creating renderer error:" << SDL_GetError() << std::endl;
 		}
-		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
 		int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
 		if (!IMG_Init(imgFlags))

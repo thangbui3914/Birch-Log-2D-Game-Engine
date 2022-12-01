@@ -9,6 +9,7 @@ public:
 	StateMachine* stateMachine;
 
 	virtual void input() {}
+	virtual void update() {}
 	virtual void draw() {}
 	virtual ~State() {}
 };

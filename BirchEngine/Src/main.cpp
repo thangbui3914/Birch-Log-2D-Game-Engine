@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	int frameTime;
 
 	game = new Game();
-	game->init("World worst Cookie Clicker", 1280, 720, false);
+	game->init("Pong clone", 1280, 720, false);
 
 	while (game->running())
 	{

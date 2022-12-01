@@ -8,7 +8,6 @@ class PlayState;
 class MenuState : public State
 {
 private:
-	Entity& background;
 	Entity& greetText;
 
 	enum groupLabels : std::size_t
@@ -21,8 +20,6 @@ private:
 	std::vector<Entity*>& screens;
 public:
 	MenuState();
-
-	MenuState(Entity& background);
 
 	void input() override;
 

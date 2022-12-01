@@ -25,6 +25,7 @@ void StateMachine::input()
 
 void StateMachine::update()
 {
+	uState->update();
 	manager->refresh();
 	manager->Update();
 }

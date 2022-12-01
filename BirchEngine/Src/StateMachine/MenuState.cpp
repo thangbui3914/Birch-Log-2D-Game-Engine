@@ -1,30 +1,13 @@
 #include "MenuState.h"
 
 MenuState::MenuState()
-	: background(StateMachine::manager->addEntity()),
-	greetText(StateMachine::manager->addEntity()),
-	backgrounds(StateMachine::manager->getGroup(groupMap)),
-	screens(StateMachine::manager->getGroup(groupScreen))
-{
-	background.addComponent<TransformComponent>(0.0f, 0.0f, 1280, 720, 1);
-	background.addComponent<SpriteComponent>("assets/background.jpg");
-	background.addGroup(groupMap);
-
-	greetText.addComponent<TransformComponent>(640.0f, 360.0f);
-	greetText.addComponent<FrontComponent>("assets/Tinos-Bold.ttf", 64);
-	greetText.getComponent<FrontComponent>().setText("Greeting click anywhere to play.", color::black);
-	greetText.addGroup(groupScreen);
-}
-
-MenuState::MenuState(Entity& background)
-	: background(background),
-	greetText(StateMachine::manager->addEntity()),
+	: greetText(StateMachine::manager->addEntity()),
 	backgrounds(StateMachine::manager->getGroup(groupMap)),
 	screens(StateMachine::manager->getGroup(groupScreen))
 {
 	greetText.addComponent<TransformComponent>(640.0f, 360.0f);
-	greetText.addComponent<FrontComponent>("assets/Tinos-Bold.ttf", 64);
-	greetText.getComponent<FrontComponent>().setText("Greeting click anywhere to play.", color::black);
+	greetText.addComponent<FrontComponent>("assets/Minecraft.ttf", 64);
+	greetText.getComponent<FrontComponent>().setText("Greeting click anywhere to play.", color::white);
 	greetText.addGroup(groupScreen);
 }
 
@@ -57,6 +40,6 @@ void MenuState::draw()
 void MenuState::moveToGameState()
 {
 	greetText.destroy();
-	State* temp = new PlayState(background);
+	State* temp = new PlayState();
 	stateMachine->changeState(temp);
 }

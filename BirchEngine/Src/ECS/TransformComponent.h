@@ -47,7 +47,7 @@ public:
 
 	SDL_Rect getSDLRect()
 	{
-		return {static_cast<int>(position.x),static_cast<int>(position.y), width*scale, height*scale};
+		return { static_cast<int>(position.x),static_cast<int>(position.y), width * scale, height * scale };
 	}
 
 };

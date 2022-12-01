@@ -7,11 +7,22 @@
 class PlayState : public State
 {
 private:
-	Entity& background;
-	Entity& cookie;
-	Entity& score;
-	int mouse_x = 0;
-	int mouse_y = 0;
+	Entity& player1;
+	Entity& player2;
+	Entity& ball;
+	Entity& score1;
+	Entity& score2;
+	Entity& separator;
+
+	enum button
+	{
+		Player1Up = 0,
+		Player1Down,
+		Player2Up,
+		Player2Down,
+	};
+	bool buttons[4] = {};
+
 
 	enum groupLabels : std::size_t
 	{
@@ -22,15 +33,19 @@ private:
 	std::vector<Entity*>& backgrounds;
 	std::vector<Entity*>& screens;
 
-	int scores;
+	int scores1 = 0;
+	int scores2 = 0;
 	std::string str;
+	bool started = false;
+
+	friend void update_ballRestart(PlayState& state);
 
 public:
-	PlayState(Entity& background);
+	PlayState();
 
 	void input() override;
 
-	void draw() override;
+	void update() override;
 
-	void moveToMenuState();
+	void draw() override;
 };
