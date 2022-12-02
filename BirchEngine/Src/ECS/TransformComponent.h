@@ -50,4 +50,8 @@ public:
 		return { static_cast<int>(position.x),static_cast<int>(position.y), width * scale, height * scale };
 	}
 
+	SDL_FPoint getCenter()
+	{
+		return { position.x + width * static_cast<float>(scale) / 2.0f, position.y + height * static_cast<float>(scale) / 2.0f };
+	}
 };

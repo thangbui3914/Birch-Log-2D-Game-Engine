@@ -110,9 +110,9 @@ void update_ballRestart(PlayState& state)
 	state.ball.getComponent<TransformComponent>().velocity.x = 5.0f;
 	state.ball.getComponent<TransformComponent>().velocity.y = 5.0f;
 	state.player1.getComponent<TransformComponent>().position.x = 50.0f;
-	state.player1.getComponent<TransformComponent>().position.y = 250.0f;
+	state.player1.getComponent<TransformComponent>().position.y = 255.0f;
 	state.player2.getComponent<TransformComponent>().position.x = 1170.0f;
-	state.player2.getComponent<TransformComponent>().position.y = 250.0f;
+	state.player2.getComponent<TransformComponent>().position.y = 255.0f;
 }
 
 void PlayState::update()
@@ -215,26 +215,23 @@ void PlayState::update()
 		score2.getComponent<FrontComponent>().setText(str.c_str(), color::white);
 	}
 
-	if (AABB::RectAndRect(ball.getComponent<TransformComponent>().getSDLRect(), player1.getComponent<TransformComponent>().getSDLRect()))
+	if (AABB::RectAndRect(ball.getComponent<TransformComponent>().getSDLRect(), player1.getComponent<TransformComponent>().getSDLRect()) &&
+		ball.getComponent<TransformComponent>().velocity.x < 0)
 	{
-		if (ball.getComponent<TransformComponent>().velocity.x < 0)
+		ball.getComponent<TransformComponent>().velocity.x *= -1;
+		if (ball.getComponent<TransformComponent>().getCenter().y > player1.getComponent<TransformComponent>().getCenter().y)
 		{
-			ball.getComponent<TransformComponent>().velocity.x *= -1;
-			if (ball.getComponent<TransformComponent>().position.y > player1.getComponent<TransformComponent>().position.y + 40)
-			{
-				ball.getComponent<TransformComponent>().velocity.y *= -1;
-			}
+			ball.getComponent<TransformComponent>().velocity.y = fabs(ball.getComponent<TransformComponent>().velocity.y);
 		}
 	}
-	if (AABB::RectAndRect(ball.getComponent<TransformComponent>().getSDLRect(), player2.getComponent<TransformComponent>().getSDLRect()))
+	if (AABB::RectAndRect(ball.getComponent<TransformComponent>().getSDLRect(), player2.getComponent<TransformComponent>().getSDLRect()) &&
+		ball.getComponent<TransformComponent>().velocity.x > 0
+		)
 	{
-		if (ball.getComponent<TransformComponent>().velocity.x > 0)
+		ball.getComponent<TransformComponent>().velocity.x *= -1;
+		if (ball.getComponent<TransformComponent>().getCenter().y > player2.getComponent<TransformComponent>().getCenter().y)
 		{
-			ball.getComponent<TransformComponent>().velocity.x *= -1;
-			if (ball.getComponent<TransformComponent>().position.y > player2.getComponent<TransformComponent>().position.y + 40)
-			{
-				ball.getComponent<TransformComponent>().velocity.y *= -1;
-			}
+			ball.getComponent<TransformComponent>().velocity.y = fabs(ball.getComponent<TransformComponent>().velocity.y);
 		}
 	}
 }
